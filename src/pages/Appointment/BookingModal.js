@@ -3,15 +3,30 @@ import { format } from 'date-fns';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const BookingModal = ({ treatment, date , setTreatement }) => {
+const BookingModal = ({ treatment, date , setTreatment }) => {
     const { _id, name, slots } = treatment;
     const [user, loading, error] = useAuthState(auth);
+    const formattedDate = format(date , 'pp');
 
     const handleBooking = event =>{
         event.preventDefault();
         const slot = event.target.slot.value;
-        console.log(_id,name,slot);
-        setTreatement(null);
+        // console.log(_id,name,slot);
+
+        //booking appointment data for server side.
+        const booking ={
+            treatmentId: _id,
+            treatment: name,
+            // which date he and she booking that's why we use formatted date here!
+            date: formattedDate,
+            slot,
+            patient: user.email,
+            patientName: user.displayName,
+            phone: event.target.phone.value,
+        }
+
+        //to close the modal
+        setTreatment(null);
     }
 
 

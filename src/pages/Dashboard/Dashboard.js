@@ -29,9 +29,9 @@ const Dashboard = () => {
                     <li><Link to="/dashboard/history">My History</Link></li>
                     {/* if user is an admin then show the all users otherwise not. */}
                     { admin && <>
-                     
                         <li><Link to="/dashboard/users">All Users</Link></li>
                         <li><Link to="/dashboard/addDoctor">Add a Doctor</Link></li>
+                        <li><Link to="/dashboard/manageDoctor">Manage Doctors</Link></li>
                     
                     </> }
                 </ul>

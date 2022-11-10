@@ -39,6 +39,8 @@ const SignUp = () => {
     if ( token ) {
         navigate('/appointment');
     }
+
+    
     const  onSubmit = async data =>
     {
         // console.log(data);

@@ -10,7 +10,7 @@ const AvailableAppointment = ({ date }) => {
     const [treatment, setTreatment] = useState(null);
 
     const formattedDate = format(date, 'PP');
-    const { data: services, isLoading, refetch } = useQuery(['available',formattedDate], () => fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    const { data: services, isLoading, refetch } = useQuery(['available',formattedDate], () => fetch(`https://doctors-appoinments.onrender.com/available?date=${formattedDate}`)
         .then(res => res.json()))
 
     if (isLoading) {
@@ -19,7 +19,7 @@ const AvailableAppointment = ({ date }) => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    //     fetch(`https://doctors-appoinments.onrender.com/available?date=${formattedDate}`)
     //     .then(res => res.json())
     //     .then(data => setServices(data));
     // },[formattedDate])
